@@ -43,11 +43,11 @@ jobs:
         with:
           type: 'zip'
           directory: build
-          filename: "${{ github.event.repository.name }}-${{ github.ref_name }}-${{ matrix.idf_target }}.zip"
+          filename: "${{ github.event.repository.name }}-${{ github.ref_name }}-${{ matrix.idf_ver }}-${{ matrix.idf_target }}.zip"
           
       - name: Release prebuilt
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/${{ github.event.repository.name }}-${{ github.ref_name }}-${{ matrix.idf_target }}.zip"
+          artifacts: "build/${{ github.event.repository.name }}-${{ github.ref_name }}-${{ matrix.idf_ver }}-${{ matrix.idf_target }}.zip"
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,11 @@
+services:
+  esp-idf:
+    image: espressif/idf:latest
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    command: sh -c "tail -f /dev/null" # . $IDF_PATH/export.sh
+    ports:
+      - 8000:8000
+    working_dir: /app/project
+    volumes:
+      - .:/app/project

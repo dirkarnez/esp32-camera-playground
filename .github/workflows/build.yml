@@ -3,7 +3,14 @@ on:
   push:
     branches:
     - main
+    
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
+permissions:
+    contents: write
+    
 jobs:
   build-examples:
     name: Build for ${{ matrix.idf_target }} on ${{ matrix.idf_ver }}

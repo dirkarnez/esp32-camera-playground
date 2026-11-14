@@ -166,7 +166,7 @@ void app_main(void)
 #endif
 
     wifi_sta_join_blocking();
-    
+
     while (1)
     {
         ESP_LOGI(TAG, "Taking picture...");

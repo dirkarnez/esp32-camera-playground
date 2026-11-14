@@ -5,3 +5,8 @@ esp32-camera-playground
 
 ### Using
 - [espressif/esp32-camera](https://github.com/espressif/esp32-camera)
+
+### Notes
+- always re-init the camera / re-start if cannot get image
+  - to kill dangling http connections
+  - to fix the camera

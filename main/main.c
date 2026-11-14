@@ -35,6 +35,7 @@
 
 #include "sdkconfig.h"
 
+#include <esp_system.h>
 #include <esp_log.h>
 #include <esp_system.h>
 #include <nvs_flash.h>
@@ -141,6 +142,19 @@ static void maybe_init_autofocus(void)
 
 void app_main(void)
 {
+    ESP_LOGI(TAG_STA, "==============app_main==================");
+
+    esp_chip_info_t chip_info;
+    esp_chip_info(&chip_info);
+
+    // chip_info.cores will return 1 or 2 at runtime based on the actual silicon
+    ESP_LOGI("CHIP", "This chip has %d CPU core(s)", chip_info.cores);
+    
+    for (int i = 0; i < chip_info.cores; i++) 
+    {
+        ESP_LOGI("CHIP", "Available Core ID: %d", i);
+    }
+
     // init NVS for WiFi
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
